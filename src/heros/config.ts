@@ -59,13 +59,40 @@ export const hero: Field = {
       },
     }),
     {
-      name: 'media',
+      name: 'LogoPrincipal',
       type: 'upload',
       admin: {
         condition: (_, { type } = {}) => ['highImpact', 'mediumImpact'].includes(type),
       },
       relationTo: 'media',
       required: true,
+    },
+    {
+      name: 'VideoIzquierdaInferior',
+      type: 'upload',
+      admin: {
+        condition: (_, { type } = {}) => ['highImpact', 'mediumImpact'].includes(type),
+      },
+      relationTo: 'media',
+      required: false,
+    },
+    {
+      name: 'VideoDerechaSuperior',
+      type: 'upload',
+      admin: {
+        condition: (_, { type } = {}) => ['highImpact', 'mediumImpact'].includes(type),
+      },
+      relationTo: 'media',
+      required: false,
+    },
+    {
+      name: 'ImagenInferiorDerecha',
+      type: 'upload',
+      admin: {
+        condition: (_, { type } = {}) => ['highImpact', 'mediumImpact'].includes(type),
+      },
+      relationTo: 'media',
+      required: false,
     },
   ],
   label: false,

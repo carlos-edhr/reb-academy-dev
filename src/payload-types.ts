@@ -189,7 +189,10 @@ export interface Page {
           id?: string | null;
         }[]
       | null;
-    media?: (string | null) | Media;
+    LogoPrincipal?: (string | null) | Media;
+    VideoIzquierdaInferior?: (string | null) | Media;
+    VideoDerechaSuperior?: (string | null) | Media;
+    ImagenInferiorDerecha?: (string | null) | Media;
   };
   layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock)[];
   meta?: {
@@ -1008,7 +1011,10 @@ export interface PagesSelect<T extends boolean = true> {
                   };
               id?: T;
             };
-        media?: T;
+        LogoPrincipal?: T;
+        VideoIzquierdaInferior?: T;
+        VideoDerechaSuperior?: T;
+        ImagenInferiorDerecha?: T;
       };
   layout?:
     | T

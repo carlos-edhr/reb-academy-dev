@@ -11,7 +11,14 @@ import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import { Facebook, Instagram, Play, Youtube } from 'lucide-react'
 
-export const HighImpactHero: React.FC<Page['hero']> = ({ links, media, richText }) => {
+export const HighImpactHero: React.FC<Page['hero']> = ({
+  links,
+  LogoPrincipal,
+  VideoIzquierdaInferior,
+  ImagenInferiorDerecha,
+  VideoDerechaSuperior,
+  richText,
+}) => {
   const { setHeaderTheme } = useHeaderTheme()
 
   useEffect(() => {
@@ -66,27 +73,47 @@ export const HighImpactHero: React.FC<Page['hero']> = ({ links, media, richText 
         <div className="flex flex-col  w-full gap-8  ">
           {/* Logo */}
           <div className="flex-shrink-0 flex flex-col justify-center items-center">
-            <img
+            {LogoPrincipal && typeof LogoPrincipal === 'object' && (
+              <Media
+                imgClassName="object-contain w-40 h-40 md:w-60 md:h-60"
+                priority
+                resource={LogoPrincipal}
+              />
+            )}
+            {/* <img
               src="/icon.png"
               alt="Logo Rosarito Elite"
               className="object-contain w-40 h-40 md:w-60 md:h-60"
-            />
+            /> */}
           </div>
           {/* Text Content */}
           <div className="flex flex-col text-center space-y-8 w-full">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
-              Rosarito Elite <br />
+              Rosarito Elite
+              <br />
               <span className="bg-gradient-to-r from-red-500 to-orange-400 bg-clip-text text-transparent">
                 Basketball Academy
               </span>
             </h1>
-            <p className="text-base md:text-lg text-gray-300 max-w-2xl mx-auto">
-              Transforma tu potencial en rendimiento con nuestro programa profesional de
-              entrenamiento de baloncesto. ¡Inscripciones abiertas!
-            </p>
+            {/* <p className="text-base md:text-lg text-gray-300 max-w-2xl mx-auto"> */}
+            {richText && <RichText className="mb-6" data={richText} enableGutter={false} />}
+            {Array.isArray(links) && links.length > 0 && (
+              <ul className="flex md:justify-center gap-4">
+                {links.map(({ link }, i) => {
+                  return (
+                    <li key={i}>
+                      <CMSLink {...link} />
+                    </li>
+                  )
+                })}
+              </ul>
+            )}
+            {/* Transforma tu potencial en rendimiento con nuestro programa profesional de
+              entrenamiento de baloncesto. ¡Inscripciones abiertas! */}
+            {/* </p> */}
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center w-full">
-            <Button
+            {/* <Button
               size="lg"
               className="bg-red-600 hover:bg-red-700 text-lg py-6 px-8 rounded-lg transition-all shadow-lg hover:shadow-red-500/30"
               asChild
@@ -103,7 +130,7 @@ export const HighImpactHero: React.FC<Page['hero']> = ({ links, media, richText 
               asChild
             >
               <Link href="#programas">Conocer Más</Link>
-            </Button>
+            </Button> */}
           </div>
 
           {/* Nueva sección de redes sociales */}
@@ -154,7 +181,7 @@ export const HighImpactHero: React.FC<Page['hero']> = ({ links, media, richText 
           </div>
           {/* Left side video - Not visible on mobile */}
           <div className="hidden md:block relative aspect-video rounded-xl overflow-hidden shadow-2xl transform transition-all group-hover:scale-[1.015]">
-            <video
+            {/* <video
               autoPlay
               muted
               loop
@@ -162,7 +189,15 @@ export const HighImpactHero: React.FC<Page['hero']> = ({ links, media, richText 
               poster="/training-preview.jpg"
             >
               <source src="/media/video1.mp4" type="video/mp4" />
-            </video>
+            </video> */}
+            {VideoIzquierdaInferior && typeof VideoIzquierdaInferior === 'object' && (
+              <Media
+                videoClassName="w-full h-full object-cover"
+                priority
+                resource={VideoIzquierdaInferior}
+              />
+            )}
+
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
           </div>
         </div>
@@ -171,7 +206,7 @@ export const HighImpactHero: React.FC<Page['hero']> = ({ links, media, richText 
         <div className="relative group flex flex-col gap-6 h-full">
           {/* Video Container */}
           <div className="relative aspect-video rounded-xl overflow-hidden shadow-2xl transform transition-all group-hover:scale-[1.015]">
-            <video
+            {/* <video
               autoPlay
               muted
               loop
@@ -179,20 +214,30 @@ export const HighImpactHero: React.FC<Page['hero']> = ({ links, media, richText 
               poster="/training-preview.jpg"
             >
               <source src="/media/video2.mp4" type="video/mp4" />
-            </video>
+            </video> */}
+            {VideoDerechaSuperior && typeof VideoDerechaSuperior === 'object' && (
+              <Media
+                videoClassName="w-full h-full object-cover"
+                priority
+                resource={VideoDerechaSuperior}
+              />
+            )}
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
           </div>
 
           {/* Image Container - Hidden on mobile */}
           <div className="hidden md:block relative aspect-square rounded-xl overflow-hidden shadow-2xl transform transition-all group-hover:scale-[1.015]">
-            <Image
+            {/* <Image
               src="/media/programs6.JPG"
               alt="Equipo entrenando"
               fill
               className="object-cover"
               quality={100}
               priority
-            />
+            /> */}
+            {ImagenInferiorDerecha && typeof ImagenInferiorDerecha === 'object' && (
+              <Media imgClassName="object-cover" priority resource={ImagenInferiorDerecha} />
+            )}
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
           </div>
         </div>
