@@ -12,7 +12,6 @@ import './custom.scss'
 type Args = {
   children: React.ReactNode
 }
-
 const serverFunction: ServerFunctionClient = async function (args) {
   'use server'
   return handleServerFunctions({
