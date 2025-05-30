@@ -1,7 +1,7 @@
 {
   "name": "reb-academy-app",
   "version": "1.0.0",
-  "description": "Website template for Payload",
+  "description": "REB Academy Website",
   "license": "MIT",
   "type": "module",
   "scripts": {
