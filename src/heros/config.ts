@@ -39,6 +39,15 @@ export const hero: Field = {
       required: true,
     },
     {
+      name: 'media',
+      type: 'upload',
+      admin: {
+        condition: (_, { type } = {}) => ['highImpact', 'mediumImpact'].includes(type),
+      },
+      relationTo: 'media',
+      required: false,
+    },
+    {
       name: 'richText',
       type: 'richText',
       editor: lexicalEditor({
@@ -58,15 +67,7 @@ export const hero: Field = {
         maxRows: 2,
       },
     }),
-    {
-      name: 'media',
-      type: 'upload',
-      admin: {
-        condition: (_, { type } = {}) => ['highImpact', 'mediumImpact'].includes(type),
-      },
-      relationTo: 'media',
-      required: false,
-    },
+
     {
       name: 'LogoPrincipal',
       type: 'upload',
