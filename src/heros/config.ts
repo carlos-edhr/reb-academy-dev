@@ -38,15 +38,7 @@ export const hero: Field = {
       ],
       required: true,
     },
-    {
-      name: 'media',
-      type: 'upload',
-      admin: {
-        condition: (_, { type } = {}) => ['highImpact', 'mediumImpact'].includes(type),
-      },
-      relationTo: 'media',
-      required: false,
-    },
+
     {
       name: 'richText',
       type: 'richText',
